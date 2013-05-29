@@ -1,0 +1,357 @@
+using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
+using System.Linq;
+using System.Text;
+using System.Windows.Forms;
+using System.Data.OleDb; 
+
+namespace market
+{
+    public partial class MasterBarang : Form
+    {
+        public static DataSet ds2 = new DataSet();
+        public string strCon = "Provider=Microsoft.Jet.OLEDB.4.0;Data Source=|DataDirectory|/data.mdb" ;
+        public MasterBarang()
+        {
+            InitializeComponent();
+        }
+
+        public static void panggilData()
+        {//membuat koneksi
+            OleDbConnection connection = new OleDbConnection("Provider=Microsoft.Jet.OLEDB.4.0;Data Source=|DataDirectory|/data.mdb");
+            // membuat perintah untuk koneksi ke data base MsBararng
+            OleDbCommand command = new OleDbCommand("select * from MsBarang");
+            try
+            {//membuka koneksi
+                connection.Open();
+                command.Connection = connection;//memilih jenis perintah
+                command.CommandType = CommandType.Text;
+                command.ExecuteNonQuery();//eksekusi perintah command
+                DataSet ds1 = new DataSet();
+                OleDbDataAdapter da2 = new OleDbDataAdapter(command);
+                da2.Fill(ds2, "barang");
+                connection.Close();//menutup koneksi
+
+            }
+            catch (Exception ex)//membuka koneksi
+            {
+                MessageBox.Show(ex.Message);//menampilkan pesan
+            }
+                      
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            OleDbConnection connection = new OleDbConnection(strCon);//koneksi baru
+            OleDbCommand command = new OleDbCommand("select * from MsBarang");//membuat command yg nantinya akan di gunakan
+            try//berfungsi menangani kesalahan
+            {
+                connection.Open();
+                command.Connection = connection;
+                command.CommandType = CommandType.Text;//memilih jenis perintah yang digunakan
+                command.ExecuteNonQuery();
+                DataSet ds1 = new DataSet();
+                OleDbDataAdapter da1 = new OleDbDataAdapter(command);
+                da1.Fill(ds1, "barang");
+                dataGridView1.DataSource = ds1;
+                dataGridView1.DataMember = "barang";
+                connection.Close();
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            
+        }
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+            OleDbConnection connection = new OleDbConnection("Provider=Microsoft.Jet.OLEDB.4.0;Data Source=|DataDirectory|/data.mdb");
+            OleDbCommand command = new OleDbCommand("select * from MsBarang where [NamaBarang] like '%" + txtKeyword.Text + "%'");
+            try
+            {
+                connection.Open();
+                command.Connection = connection;
+                command.CommandType = CommandType.Text;
+                command.ExecuteNonQuery();
+                DataSet ds1 = new DataSet();
+                OleDbDataAdapter da1 = new OleDbDataAdapter(command);
+                da1.Fill(ds1, "barang");
+                dataGridView1.DataSource = ds1;
+                dataGridView1.DataMember = "barang";
+                connection.Close();
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            // menutup secara otomatis koneksi 
+            }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            OleDbConnection connection = new OleDbConnection(strCon);
+
+            OleDbCommand command = new OleDbCommand("select * from MsBarang");
+            try
+            {
+                connection.Open();
+                command.Connection = connection;
+                command.CommandType = CommandType.Text;
+                command.CommandText = "insert into MsBarang(NamaBarang) values('"+ txtNama.Text + "')";
+                command.ExecuteNonQuery();
+                connection.Close();
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+           
+            ds2.Clear();
+            panggilData();
+            dataGridView1.DataSource = ds2;
+            dataGridView1.DataMember = "barang";             
+        }
+
+        private void MasterBarang_Load(object sender, EventArgs e)
+        {
+            ds2.Clear();
+            panggilData();
+            dataGridView1.DataSource = ds2;
+            dataGridView1.DataMember = "barang";             
+        }
+
+        private void button4_Click_1(object sender, EventArgs e)
+        {
+            OleDbConnection connection = new OleDbConnection(strCon);
+            OleDbCommand command = new OleDbCommand("MsBarang");
+            try
+            {
+                connection.Open();
+                command.Connection = connection;
+                command.CommandType = CommandType.TableDirect;
+                command.ExecuteNonQuery();
+                DataSet ds1 = new DataSet();
+                OleDbDataAdapter da1 = new OleDbDataAdapter(command);
+                da1.Fill(ds1, "barang");
+                dataGridView1.DataSource = ds1;
+                dataGridView1.DataMember = "barang";
+                connection.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+           
+        }
+
+        private void tabPage2_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button6_Click(object sender, EventArgs e)
+        {
+            OleDbConnection connection = new OleDbConnection("Provider=Microsoft.Jet.OLEDB.4.0;Data Source=|DataDirectory|/data.mdb");
+            
+            OleDbParameter parameter1 = new OleDbParameter();
+            OleDbCommand command = new OleDbCommand("select * from MsBarang where [NamaBarang] = ?");
+            command.Parameters.Add(parameter1);
+            parameter1.Value = txtKeyword2.Text ;
+            
+            try
+            {
+                connection.Open();
+                command.Connection = connection;
+                command.CommandType = CommandType.Text;                
+                DataSet ds1 = new DataSet();
+                OleDbDataAdapter da1 = new OleDbDataAdapter(command);
+                
+
+                da1.Fill(ds1, "barang");
+                command.ExecuteNonQuery();
+                dataGridView1.DataSource = ds1;
+                dataGridView1.DataMember = "barang";
+                connection.Close();
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            
+        }
+
+        private void button7_Click(object sender, EventArgs e)
+        {
+            OleDbConnection connection = new OleDbConnection(strCon);
+
+            OleDbCommand command = new OleDbCommand("select * from MsBarang");
+            
+            try
+            {
+                connection.Open();
+                command.Connection = connection;
+                command.CommandType = CommandType.Text;
+                OleDbDataReader dr = command.ExecuteReader();
+                
+                while (dr.Read())
+                {
+                    MessageBox.Show(dr[0].ToString() + " " + dr[1].ToString());
+                }
+
+                connection.Close();
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+          
+        }
+
+        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+         
+        }
+
+        private void txtNama_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button10_Click(object sender, EventArgs e)
+        {
+            OleDbConnection connection = new OleDbConnection(strCon);
+
+            OleDbCommand command = new OleDbCommand("select * from MsBarang");
+            try
+            {
+                cmbID.Items.Clear();
+
+                connection.Open();
+                command.Connection = connection;
+                command.CommandType = CommandType.Text;
+                OleDbDataReader dr = command.ExecuteReader();
+                while (dr.Read())
+                {
+                    cmbID.Items.Add(dr[0]);
+                }
+                connection.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            finally
+            {
+                cmbID.SelectedIndex = 0;
+            }
+         
+        }
+
+        private void textBox1_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button8_Click(object sender, EventArgs e)
+        {
+            OleDbConnection connection = new OleDbConnection(strCon);
+
+            OleDbCommand command = new OleDbCommand("select * from MsBarang");
+
+            try
+            {
+                connection.Open();
+                command.Connection = connection;
+                command.CommandType = CommandType.Text;
+                command.CommandText = "delete from MsBarang where [KodeBarang] = " + cmbID.SelectedItem + "";
+                command.ExecuteNonQuery();
+                connection.Close();
+                
+            }
+           
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            finally
+            {
+                button10.PerformClick();
+                txt_Upd_Harga.Text = "" ; 
+                txt_Upd_Jumlah.Text = "" ; 
+                txt_Upd_Nama.Text = "" ; 
+            } 
+
+        }
+
+        private void cmbID_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            OleDbConnection connection = new OleDbConnection(strCon);
+
+            OleDbCommand command = new OleDbCommand("select * from MsBarang where [KodeBarang] = " + cmbID.SelectedItem +  " ");
+
+            try
+            {
+             
+
+                connection.Open();
+                command.Connection = connection;
+                command.CommandType = CommandType.Text;
+                OleDbDataReader dr = command.ExecuteReader();
+                while (dr.Read())
+                {
+                    txt_Upd_Harga.Text = Convert.ToString(dr[2]);
+                    txt_Upd_Jumlah.Text = Convert.ToString(dr[3]);
+                    txt_Upd_Nama.Text = (string)dr[1];
+                }
+                connection.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            finally
+            {
+                
+            }
+    
+        }
+
+        private void button9_Click(object sender, EventArgs e)
+        {
+            OleDbConnection connection = new OleDbConnection(strCon);
+
+            OleDbCommand command = new OleDbCommand("update MsBarang set [NamaBarang] = '" + txt_Upd_Nama.Text + "' , [JumlahBarang] = " + txt_Upd_Jumlah.Text + ", [HargaBarang] = " + txt_Upd_Harga.Text + " where [KodeBarang] = " + cmbID.SelectedItem + " ");
+
+            try
+            {
+                connection.Open();
+                command.Connection = connection;
+                command.CommandType = CommandType.Text;
+                
+                command.ExecuteNonQuery() ;
+                connection.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            finally
+            {
+            }
+        }
+
+    }
+}
