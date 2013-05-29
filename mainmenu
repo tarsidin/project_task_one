@@ -1,0 +1,97 @@
+using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Data.OleDb;
+using System.Drawing;
+using System.Linq;
+using System.Text;
+using System.Windows.Forms;
+
+namespace market
+{
+    public partial class Form1 : Form
+    {
+        public Form1()
+        {
+            InitializeComponent();
+        }
+
+        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+                
+            }
+
+        
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+            // TODO: This line of code loads data into the 'dataDataSet.MsBarang' table. You can move, or remove it, as needed.
+
+
+        }
+
+        private void masterBarangToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            //susunan untuk membuat MDI Parent adalah sebagai berikut
+            //form_anak alias = new form_anak();
+            //form_anak.MdiParent = form_indukl;
+            //untuk memunculkan form kita dapat menggunakan .show / .showdialog
+            //alias.show() digunakan untuk menampilkan form tanpa lock form tersebut
+            //alias.showdialog() kita gunakan apabila kita ingin popup
+            //suatu form dengan kondisi tidak dapat melihat form lain
+            //dan terfokus kepada form tersebut hingga form tersebut di close
+            this.IsMdiContainer = true; 
+             MasterBarang mb = new MasterBarang();
+            mb.MdiParent = this;
+            mb.Show();
+
+        }
+
+        private void cascadeToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            //kita gunakan untuk mengatur tampilan form ,
+            //ada 4 jenis tampilan yaitu
+            //cascade , tilehorizontal , tilevertical , arrangeicons
+            //kita gunakan sesuai kebutuhan kita
+            LayoutMdi(MdiLayout.Cascade);
+        }
+
+        private void exitToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Close();
+        }
+
+        private void tilehorizontalToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            //kita gunakan untuk mengatur tampilan form ,
+            //ada 4 jenis tampilan yaitu
+            //cascade , tilehorizontal , tilevertical , arrangeicons
+            //kita gunakan sesuai kebutuhan kita
+            LayoutMdi(MdiLayout.TileHorizontal);
+        }
+
+        private void tileverticalToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            //kita gunakan untuk mengatur tampilan form ,
+            //ada 4 jenis tampilan yaitu
+            //cascade , tilehorizontal , tilevertical , arrangeicons
+            //kita gunakan sesuai kebutuhan kita
+            LayoutMdi(MdiLayout.TileVertical);
+        }
+
+        private void aarrangeiconsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            //kita gunakan untuk mengatur tampilan form ,
+            //ada 4 jenis tampilan yaitu
+            //cascade , tilehorizontal , tilevertical , arrangeicons
+            //kita gunakan sesuai kebutuhan kita
+            LayoutMdi(MdiLayout.ArrangeIcons);
+        }
+    }
+}
