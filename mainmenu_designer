@@ -1,0 +1,139 @@
+namespace market
+{
+    partial class Form1
+    {
+       private System.ComponentModel.IContainer components = null;
+
+        protected override void Dispose(bool disposing)
+        {
+            if (disposing && (components != null))
+            {
+                components.Dispose();
+            }
+            base.Dispose(disposing);
+        }
+
+        #region Windows Form Designer generated code
+
+        /// <summary>
+        /// Required method for Designer support - do not modify
+        /// the contents of this method with the code editor.
+        /// </summary>
+        private void InitializeComponent()
+        {
+            this.menuStrip1 = new System.Windows.Forms.MenuStrip();
+            this.menuMasterToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.masterBarangToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.viewToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.cascadeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.tilehorizontalToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.tileverticalToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.aarrangeiconsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.menuStrip1.SuspendLayout();
+            this.SuspendLayout();
+            // 
+            // menuStrip1
+            // 
+            this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.menuMasterToolStripMenuItem,
+            this.exitToolStripMenuItem,
+            this.viewToolStripMenuItem});
+            this.menuStrip1.Location = new System.Drawing.Point(0, 0);
+            this.menuStrip1.Name = "menuStrip1";
+            this.menuStrip1.Size = new System.Drawing.Size(580, 24);
+            this.menuStrip1.TabIndex = 3;
+            this.menuStrip1.Text = "menuStrip1";
+            // 
+            // menuMasterToolStripMenuItem
+            // 
+            this.menuMasterToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.masterBarangToolStripMenuItem});
+            this.menuMasterToolStripMenuItem.Name = "menuMasterToolStripMenuItem";
+            this.menuMasterToolStripMenuItem.Size = new System.Drawing.Size(89, 20);
+            this.menuMasterToolStripMenuItem.Text = "Menu Master";
+            // 
+            // masterBarangToolStripMenuItem
+            // 
+            this.masterBarangToolStripMenuItem.Name = "masterBarangToolStripMenuItem";
+            this.masterBarangToolStripMenuItem.Size = new System.Drawing.Size(150, 22);
+            this.masterBarangToolStripMenuItem.Text = "Master Barang";
+            this.masterBarangToolStripMenuItem.Click += new System.EventHandler(this.masterBarangToolStripMenuItem_Click);
+            // 
+            // exitToolStripMenuItem
+            // 
+            this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
+            this.exitToolStripMenuItem.Size = new System.Drawing.Size(37, 20);
+            this.exitToolStripMenuItem.Text = "Exit";
+            this.exitToolStripMenuItem.Click += new System.EventHandler(this.exitToolStripMenuItem_Click);
+            // 
+            // viewToolStripMenuItem
+            // 
+            this.viewToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.cascadeToolStripMenuItem,
+            this.tilehorizontalToolStripMenuItem,
+            this.tileverticalToolStripMenuItem,
+            this.aarrangeiconsToolStripMenuItem});
+            this.viewToolStripMenuItem.Name = "viewToolStripMenuItem";
+            this.viewToolStripMenuItem.Size = new System.Drawing.Size(44, 20);
+            this.viewToolStripMenuItem.Text = "View";
+            // 
+            // cascadeToolStripMenuItem
+            // 
+            this.cascadeToolStripMenuItem.Name = "cascadeToolStripMenuItem";
+            this.cascadeToolStripMenuItem.Size = new System.Drawing.Size(118, 22);
+            this.cascadeToolStripMenuItem.Text = "Cascade";
+            this.cascadeToolStripMenuItem.Click += new System.EventHandler(this.cascadeToolStripMenuItem_Click);
+            // 
+            // tilehorizontalToolStripMenuItem
+            // 
+            this.tilehorizontalToolStripMenuItem.Name = "tilehorizontalToolStripMenuItem";
+            this.tilehorizontalToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.tilehorizontalToolStripMenuItem.Text = "Tilehorizontal";
+            this.tilehorizontalToolStripMenuItem.Click += new System.EventHandler(this.tilehorizontalToolStripMenuItem_Click);
+            // 
+            // tileverticalToolStripMenuItem
+            // 
+            this.tileverticalToolStripMenuItem.Name = "tileverticalToolStripMenuItem";
+            this.tileverticalToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.tileverticalToolStripMenuItem.Text = "Tilevertical ";
+            this.tileverticalToolStripMenuItem.Click += new System.EventHandler(this.tileverticalToolStripMenuItem_Click);
+            // 
+            // aarrangeiconsToolStripMenuItem
+            // 
+            this.aarrangeiconsToolStripMenuItem.Name = "aarrangeiconsToolStripMenuItem";
+            this.aarrangeiconsToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.aarrangeiconsToolStripMenuItem.Text = "Arrangeicons";
+            this.aarrangeiconsToolStripMenuItem.Click += new System.EventHandler(this.aarrangeiconsToolStripMenuItem_Click);
+            // 
+            // Form1
+            // 
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.ClientSize = new System.Drawing.Size(580, 578);
+            this.Controls.Add(this.menuStrip1);
+            this.Name = "Form1";
+            this.Text = "Form1";
+            this.Load += new System.EventHandler(this.Form1_Load);
+            this.menuStrip1.ResumeLayout(false);
+            this.menuStrip1.PerformLayout();
+            this.ResumeLayout(false);
+            this.PerformLayout();
+
+        }
+
+        #endregion
+
+        private System.Windows.Forms.MenuStrip menuStrip1;
+        private System.Windows.Forms.ToolStripMenuItem menuMasterToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem masterBarangToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem exitToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem viewToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem cascadeToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem tilehorizontalToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem tileverticalToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem aarrangeiconsToolStripMenuItem;
+
+    }
+}
+
